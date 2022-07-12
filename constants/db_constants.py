@@ -1,0 +1,2 @@
+class MongoCollection:
+    transactions = "transactions"
