@@ -12,10 +12,10 @@ db = MongoDB(DBConfig.MongoDB_URI, DBConfig.MongoDB_DB_NAME)
 transaction_bp = Blueprint("transaction_blueprint", url_prefix="")
 
 
-@transaction_bp.route("/tx", methods={"GET"})
-@doc.tag("Wallet")
-@doc.summary("Create wallet")
+@transaction_bp.get("/tx")
+@doc.tag("Transaction")
 @doc.consumes(doc.String(name="hash"), location="query")
+@doc.response(200, {"message": str}, description="OK")
 @doc.response(400, {"message": str}, description="Bad Request")
 @doc.response(401, {"message": str}, description="Unauthorized")
 @doc.response(404, {"message": str}, description="Not Found")
@@ -28,7 +28,4 @@ async def create_tx(request):
         return json({"error": "Cannot find transaction"}, status=404)
 
     return json(transaction)
-    # demo_trans = db.db["test"].find_one()
-    # demo_trans["_id"] = str(demo_trans["_id"])
-    # return json(demo_trans)
 
