@@ -1,0 +1,4 @@
+__pycache__/
+*/__pycache__/
+**/__pycache__/
+databases/db_config.py

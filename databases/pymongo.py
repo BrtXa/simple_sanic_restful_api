@@ -11,7 +11,7 @@ class MongoDB:
     # Create new document (Insert documents).
     def create_data(self, collection_name: str, new_doc: list[dict]):
         collection = self.db[collection_name]
-        collection.insert_many(new_doc)
+        collection.insert_one(new_doc)
 
     # Get documents from the database (Read/query documents).
     def read_data(self, collection_name: str, filter: dict):

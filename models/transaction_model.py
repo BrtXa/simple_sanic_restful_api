@@ -6,19 +6,15 @@ class DecodedInput:
     to_address = doc.String()
     asset_address = doc.String()
     value = doc.Integer()
-
-
-class RelatedAddressBalance:
-    DecodedInput.asset_address = doc.Float()
-
+    
 
 class RelatedAddress:
     address = doc.String()
-    balance = doc.Object(RelatedAddressBalance)
+    balance = doc.Float()
 
 
 class Transaction:
-    _id = doc.String()
+    id = doc.String()
     type = doc.String()
     hash = doc.String()
     nonce = doc.Integer()
@@ -39,8 +35,7 @@ class Transaction:
     receipt_status = doc.Integer()
     item_timestamp = doc.String()
     decoded_input = doc.Object(DecodedInput)
-    # related_addresses = doc.List(
-    #     items=[doc.Object(RelatedAddress), doc.Object(RelatedAddress)]
-    # )
+    related_addresses_0 = doc.Object(RelatedAddress)
+    related_addresses_1 = doc.Object(RelatedAddress)
     transaction_type = doc.String()
 
